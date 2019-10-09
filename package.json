@@ -1,0 +1,36 @@
+{
+  "name": "BookStore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekumamait/BookStore.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ekumamait/BookStore/issues"
+  },
+  "homepage": "https://github.com/ekumamait/BookStore#readme",
+  "devDependencies": {
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "sequelize": "^5.19.4",
+    "sqlite3": "^4.1.0",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5"
+  },
+  "dependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
