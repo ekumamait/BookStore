@@ -2,6 +2,7 @@ import _USERS from './../../users.json';
 import sequelize from "sequelize";
 import User from './users';
 
+// connection creation to the database
 const connection = new sequelize('db', 'user', 'pass', {
     host: 'localhost',
     dialect: 'sqlite',
@@ -11,8 +12,8 @@ const connection = new sequelize('db', 'user', 'pass', {
 
 connection
     .sync({
-        force: true,
-        logging: console.log()
+        // force: true,
+        // logging: console.log()
     })
     .then(() => {
         User.bulkCreate(_USERS)
