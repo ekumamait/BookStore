@@ -25,7 +25,7 @@ export class UserService {
   getUserDetails(id: number): Observable<User> {
     return this
               .http
-              .get<User>(`${this.API}/${id}`)
+              .get<User>(`${this.API}/getOne/${id}`)
               .pipe(
                 tap(data => console.log(JSON.stringify(data))),
                 catchError(this.handleError)

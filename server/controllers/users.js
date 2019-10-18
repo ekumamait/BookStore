@@ -9,92 +9,93 @@ const Users = {
    */
 
   async GetAll(req,res) {
-      try {
-        User.findAll();
-
-        return res.json({
+    User.findAll()
+    .then(user => {
+        res.json({
             "status": 200, 
             "message": "All Users", 
-            "data": rows
-          });
-      } catch (err) {
+            "data": user
+        })
+    })
+    .catch(err => {
         console.log(err);
-        return res.status(404).send(err);
-      }
+        res.status(404).send(err)
+    })
   },
 
   async GetSingleUser(req,res) {
-      try {
-        const { rows } = await User.findByPk(req.params.id)
-        console.log(rows);
-      
-        return res.json({
-            "status": 200, 
-            "message": "Single User",
-            "data": rows
+    User.findByPk(req.params.id)
+        .then(user => {
+            res.json({
+                "status": 200, 
+                "message": "Single User",
+                "data": user
+            })
         })
-      } catch (err) {
-        console.log(err);
-        return res.status(404).send('sorry cant find that')
-      }
+        .catch(err => {
+            console.log(err);
+            res.status(404).send('sorry cant find that')
+        })
   },
 
   async UpdateUser (req,res) {
     const updateUser = req.body;
-      try {
-        const { user } = await User.update({
-            name: updateUser.name,
-            password: updateUser.password
-        }, 
-            {where: {id: req.params.id}
+    User.update({
+        name: updateUser.name,
+        password: updateUser.password
+    }, 
+        {where: {id: req.params.id}
+    })
+        .then(user => {
+            res.json({
+                "status": 200, 
+                "message": 'User successfully updated', 
+                "data": user
+            })
         })
-        return res.json({
-            "status": 200, 
-            "message": 'User successfully updated', 
-            "data": user
+        .catch(err => {
+            console.log(err);
+            res.json({
+                'status': 404, 
+                'message': 'sorry cant find that'
+            })
         })
-      } catch (err) {
-        console.log(err);
-        return res.json({
-            'status': 404, 
-            'message': 'sorry cant find that'
-        })
-      }
   },
 
   async PostUser (req,res) {
-    const newUser = req.body;  
-      try {
-        const { rows } = User.create({
-            name: newUser.name,
-            email: newUser.email,
-            password: newUser.password
-        })
-        return res.json({
+    const newUser = req.body;
+    User.create({
+        name: newUser.name,
+        email: newUser.email,
+        password: newUser.password
+    })
+    .then(user => {
+        res.json({
             "status": 201, 
             "message": "User created successfully", 
-            "data": rows
+            "data": user
         })
-      } catch (err) {
+    })
+    .catch(err => {
         console.log(err);
-        return res.status(404).send(err)
-      }
+        res.status(404).send(err)
+    })
   },
 
   async DeleteUser (req,res) {
-      try {
-        const { rows } = await User.destroy({
-            where: {id: req.params.id} 
-        });
-        return res.json({
-            "status": 200, 
-            "message": 'user deleted successfully',
-            "data": rows
+    User.destroy({
+        where: {id: req.params.id} 
+    })
+        .then(() => {
+            res.json({
+                "status": 200, 
+                "message": 'user deleted successfully'
+            })
         })
-      } catch (err) {
-        console.log(err);
-        return res.status(404).send('sorry cant find that')
-      }
+        .catch(err => {
+            console.log(err);
+            res.status(404).send('sorry cant find that')
+        })
   }
 }
 

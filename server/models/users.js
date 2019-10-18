@@ -2,6 +2,7 @@ import { Sequelize, UUIDV4 } from "sequelize";
 import connection from './index';
 import _USERS from './../../users.json';
 
+// model defination for Users 
 const User = connection.define('User', {
     name: Sequelize.STRING,
     email: {
@@ -17,6 +18,5 @@ const User = connection.define('User', {
         }
     }
 });
-
 
 export default User;
