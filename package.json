@@ -31,7 +31,7 @@
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",
-    "@angular-devkit/build-angular": "~0.7.0",
+    "@angular-devkit/build-angular": "~15.0.4",
     "@angular/cli": "~6.1.2",
     "@angular/compiler-cli": "^6.1.0",
     "@angular/language-service": "^6.1.0",
